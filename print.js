@@ -46,7 +46,7 @@ function setCardElementText(card, className, content) {
 function setCardElementColor(card, className, color) {
 	const element = card.getElementsByClassName(className)[0].getElementsByTagName('span')[0];
 
-	if (color !== undefined) {
+	if (color !== undefined && color !== null) {
 		element.style.background = color.bg;
 		element.style.color = color.fg;
 	}

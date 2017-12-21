@@ -1,3 +1,15 @@
+# YouTrack Issue Cards Printer
+
+Chrome extension that allows to print issues from YouTrack as cards
+for physical scrum board.
+
+## How to use
+
+1. Install extension.
+2. Go to Your YouTrack issues list - [https://<your-youtrack-domain>/issues](https://<your-youtrack-domain>/issues)
+3. Filter issues You want to print.
+4. Click extension icon to open print page.
+
 ## Limitations
 
 This extension does not support some cases that may produce unexpected behavior,

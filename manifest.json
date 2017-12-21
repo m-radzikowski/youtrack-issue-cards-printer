@@ -1,8 +1,15 @@
 {
 	"manifest_version": 2,
-	"name": "YouTrack Printer",
-	"description": "This extension allows to print issues from YouTrack.",
-	"version": "0.1",
+	"name": "YouTrack Issue Cards Printer",
+	"description": "Print issues from JetBrains YouTrack as cards for physical scrum board",
+	"version": "0.1.0",
+	"author": "Maciej Radzikowski",
+	"icons": {
+		"16": "icon/icon16.png",
+		"32": "icon/icon32.png",
+		"48": "icon/icon48.png",
+		"128": "icon/icon128.png"
+	},
 	"background": {
 		"scripts": [
 			"on-off.js",
@@ -11,9 +18,7 @@
 		],
 		"persistent": false
 	},
-	"page_action": {
-		"default_icon": "icon.png"
-	},
+	"page_action": {},
 	"permissions": [
 		"declarativeContent",
 		"activeTab"

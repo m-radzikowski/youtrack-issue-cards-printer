@@ -26,6 +26,7 @@ function fetchIssues(url, callback) {
 				callback(data);
 			} else {
 				console.error('Error fetching issues, http code: ' + xhr.status, e, xhr);
+				// TODO Open error page / documentation
 			}
 		}
 	};
