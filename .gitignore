@@ -1,0 +1,10 @@
+# IntelliJ config
+*.iml
+.idea/*
+!.idea/codeStyles/
+!.idea/copyright/
+!.idea/fileTemplates/
+!.idea/inspectionProfiles/
+!.idea/runConfigurations/
+!.idea/codeStyleSettings.xml
+!.idea/dataSources.xml

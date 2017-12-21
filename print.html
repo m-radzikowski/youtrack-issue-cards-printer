@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>YouTrack Printer</title>
+    <style>
+        *, :before, :after {
+            border: none;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            color: #000;
+        }
+
+        @page {
+            margin: 1.5cm;
+        }
+
+        #card-template {
+            display: none;
+        }
+
+        .card-wrapper {
+            width: 8.8cm;
+            height: 8.8cm;
+            position: relative;
+            float: left;
+            display: inline-block;
+            padding: 0.5cm;
+            border: 0.01cm solid #ccc;
+            page-break-inside: avoid;
+        }
+
+        /* .card-wrapper ::before and ::after for corners-only border. */
+        .card-wrapper::before,
+        .card-wrapper::after {
+            content: '';
+            position: absolute;
+            background: #fff;
+        }
+
+        .card-wrapper::before {
+            width: calc(100% + 0.08cm - 2cm);
+            height: calc(100% + 0.08cm);
+            top: -0.04cm;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .card-wrapper::after {
+            height: calc(100% + 0.08cm - 2cm);
+            width: calc(100% + 0.2cm);
+            left: -0.1cm;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: block;
+            z-index: 5;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
+    <link rel="stylesheet" href="card.css"/>
+</head>
+<body>
+
+<div id="card-template" class="card-wrapper">
+    <div class="card">
+        <div class="magnet-place"></div>
+        <div class="issue-summary"><span></span></div>
+        <div class="issue-id"><span></span></div>
+        <div class="issue-type"><span></span></div>
+        <div class="issue-points"><span></span></div>
+        <div class="issue-priority"><span></span></div>
+    </div>
+</div>
+
+<div id="issues-wrapper"></div>
+
+<script src="print.js"></script>
+</body>
+</html>

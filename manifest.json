@@ -1,0 +1,21 @@
+{
+	"manifest_version": 2,
+	"name": "YouTrack Printer",
+	"description": "This extension allows to print issues from YouTrack.",
+	"version": "0.1",
+	"background": {
+		"scripts": [
+			"on-off.js",
+			"singleton.js",
+			"page-action.js"
+		],
+		"persistent": false
+	},
+	"page_action": {
+		"default_icon": "icon.png"
+	},
+	"permissions": [
+		"declarativeContent",
+		"activeTab"
+	]
+}
