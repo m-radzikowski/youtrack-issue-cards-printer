@@ -74,4 +74,5 @@ data.issue.forEach(function (issue) {
 	setCardElementColor(card, 'issue-priority', issue.field.priorityColor);
 });
 
-// window.print();
+window.print();
+setTimeout(window.close, 0);
