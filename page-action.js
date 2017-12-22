@@ -36,7 +36,7 @@ function fetchIssues(url, callback) {
 	xhr.send();
 }
 
-chrome.pageAction.onClicked.addListener(function (tab) {
+function findAndPrintIssues(tab) {
 	chrome.tabs.executeScript(tab.id, {file: 'find-issues-per-page.js'}, function (results) {
 		const issuesPerPage = parseInt(results[0]) || 100;
 
@@ -59,4 +59,14 @@ chrome.pageAction.onClicked.addListener(function (tab) {
 			chrome.tabs.create({url: chrome.runtime.getURL('print.html')});
 		});
 	});
+}
+
+chrome.runtime.onMessage.addListener(function (request, sender) {
+	if (sender.tab && request.action === 'print-youtrack-issues') {
+		findAndPrintIssues(sender.tab);
+	}
+});
+
+chrome.pageAction.onClicked.addListener(function (tab) {
+	findAndPrintIssues(tab);
 });

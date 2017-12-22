@@ -8,7 +8,8 @@ for physical scrum board.
 1. Install extension.
 2. Go to Your YouTrack issues list - [https://<your-youtrack-domain>/issues](https://<your-youtrack-domain>/issues)
 3. Filter issues You want to print.
-4. Click extension icon to open print page.
+4. Click extension icon or YouTrack "print issues" icon above issues list
+to print cards.
 
 ## Limitations
 

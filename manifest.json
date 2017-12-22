@@ -19,8 +19,21 @@
 		"persistent": false
 	},
 	"page_action": {},
+	"content_scripts": [
+		{
+			"matches": [
+				"<all_urls>"
+			],
+			"js": [
+				"replace-print-button.js"
+			]
+		}
+	],
 	"permissions": [
 		"declarativeContent",
 		"activeTab"
+	],
+	"optional_permissions": [
+		"<all_urls>"
 	]
 }
