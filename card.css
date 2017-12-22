@@ -23,21 +23,22 @@
 .magnet-place::before {
 	content: '';
 	display: block;
-	height: 0.2cm;
+	height: 0.4cm;
 	width: 0.4cm;
-	border-bottom-left-radius: 4cm;
-	border-bottom-right-radius: 4cm;
+	border-radius: 4cm;
+	/*border-bottom-right-radius: 4cm;*/
 	background: #aaa;
 	position: relative;
 	margin: 0 auto;
+	top: -0.2cm;
 }
 
 .issue-summary {
 	top: 1.3cm;
 	left: 0.9cm;
 	right: 0;
-	height: calc(20pt * 5 * 1.25);
-	font-size: 20pt;
+	height: calc(26pt * 4 * 1.25);
+	font-size: 26pt;
 	overflow: hidden;
 	display: flex;
 	align-items: center;
@@ -46,7 +47,7 @@
 
 .issue-summary > span {
 	display: -webkit-box;
-	-webkit-line-clamp: 5;
+	-webkit-line-clamp: 4;
 	-webkit-box-orient: vertical;
 }
 
@@ -55,18 +56,24 @@
 	height: 1.8cm;
 	left: 0.9cm;
 	line-height: 1.8cm;
-	font-size: 14pt;
+	font-size: 20pt;
 	color: #666;
 }
 
 .issue-type {
 	right: 0;
-	line-height: 1cm;
+	width: 2.5cm;
 }
 
 .issue-type > span {
 	padding: 0.05cm 0.2cm;
 	border-radius: 0.1cm;
+	font-size: 14pt;
+	width: 100%;
+	display: block;
+	text-align: center;
+	max-height: calc(14pt * 1.25 * 2 + 0.05cm * 2);
+	overflow: hidden;
 }
 
 .issue-points {
@@ -78,7 +85,7 @@
 	bottom: 0;
 	text-align: center;
 	line-height: 1.8cm;
-	font-size: 28pt;
+	font-size: 32pt;
 }
 
 .issue-points.hide {
@@ -86,7 +93,7 @@
 }
 
 .issue-priority {
-	width: 0.4cm;
+	width: 0.5cm;
 	height: 100%;
 	top: 0;
 	font-size: 0;
