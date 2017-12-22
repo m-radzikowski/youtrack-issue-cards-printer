@@ -31,9 +31,7 @@
 	],
 	"permissions": [
 		"declarativeContent",
-		"activeTab"
-	],
-	"optional_permissions": [
+		"activeTab",
 		"<all_urls>"
 	]
 }
