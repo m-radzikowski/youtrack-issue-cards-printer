@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css?family=Arbutus+Slab&subset=latin-ext');
+
+@line-height: 1.25;
+@issue-summary-lines: 4;
+@left-text-start: 0.9cm;
+
+.card {
+	font-family: 'Arbutus Slab', serif;
+	font-size: 12pt;
+	line-height: @line-height;
+
+	& > * {
+		position: absolute;
+	}
+}
+
+.magnet-place {
+	@radius: 1cm;
+
+	left: calc(50% - @radius);
+	height: @radius;
+	width: calc(@radius * 2);
+	border-bottom-left-radius: @radius;
+	border-bottom-right-radius: @radius;
+	border: 1px dashed #ccc;
+	border-top: 0;
+}
+
+.magnet-place::before {
+	@radius: 0.2cm;
+
+	content: '';
+	display: block;
+	height: calc(@radius * 2);
+	width: calc(@radius * 2);
+	border-radius: @radius;
+	background: #aaa;
+	position: relative;
+	margin: 0 auto;
+	top: -@radius;
+}
+
+.issue-summary {
+	@font-size: 26pt;
+
+	top: 1.3cm;
+	left: @left-text-start;
+	right: 0;
+	height: calc(@font-size * @issue-summary-lines * @line-height);
+	font-size: @font-size;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	word-wrap: break-word;
+}
+
+.issue-summary > span {
+	display: -webkit-box;
+	-webkit-line-clamp: @issue-summary-lines;
+	-webkit-box-orient: vertical;
+}
+
+.issue-id {
+	bottom: 0;
+	height: 1.8cm;
+	left: @left-text-start;
+	line-height: 1.8cm;
+	font-size: 20pt;
+	color: #666;
+}
+
+.issue-type {
+	right: 0;
+	width: 2.5cm;
+}
+
+.issue-type > span {
+	@font-size: 14pt;
+	@vertical-padding: 0.05cm;
+
+	padding: @vertical-padding 0.2cm;
+	border-radius: 0.1cm;
+	font-size: @font-size;
+	width: 100%;
+	display: block;
+	text-align: center;
+	max-height: calc(@font-size * @line-height * 2 + @vertical-padding * 2);
+	overflow: hidden;
+}
+
+.issue-points {
+	@diameter: 1.8cm;
+
+	width: @diameter;
+	height: @diameter;
+	border-radius: 50%;
+	border: 0.05cm solid #666;
+	right: 0;
+	bottom: 0;
+	text-align: center;
+	line-height: @diameter;
+	font-size: 32pt;
+}
+
+.issue-points.hide {
+	display: block; /* never hide */
+}
+
+.issue-priority {
+	width: 0.5cm;
+	height: 100%;
+	top: 0;
+	font-size: 0;
+}
+
+.issue-priority > span {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
