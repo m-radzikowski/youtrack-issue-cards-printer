@@ -17,6 +17,20 @@
 		return def;
 	}
 
+	function getContextQuery(location) {
+		const pathname = location.pathname;
+
+		let context = '';
+		if (pathname.startsWith('/issues/')) {
+			context = pathname.substr('/issues/'.length);
+		} else if (pathname.startsWith('/tag/') || pathname.startsWith('/search/')) {
+			const tag = pathname.substr(pathname.indexOf('/', 1) + 1);
+			context = tag.substring(0, tag.lastIndexOf('-'));
+		}
+
+		return context ? '#{' + decodeURIComponent(context) + '}' : ''
+	}
+
 	function fetchIssues(url, callback) {
 		const xhr = new XMLHttpRequest();
 
@@ -45,10 +59,11 @@
 			const origin = location.origin;
 			const skipIssues = getQueryVariable(location, 'p', 0);
 
-			let query = getQueryVariable(location, 'q', ''); // TODO Search context - currently works for "everything", see: https://youtrack.jetbrains.com/issue/JT-45011
+			let query = getQueryVariable(location, 'q', '');
 			if (!query.includes('sort by')) { // add default sort - by updated
 				query += ' sort by: updated';
 			}
+			query = '(' + query + ') and ' + getContextQuery(location);
 
 			const restUrl = origin + '/rest/issue?' +
 				'filter=' + encodeURIComponent(query) +
