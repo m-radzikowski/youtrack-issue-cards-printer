@@ -25,7 +25,8 @@
 				"<all_urls>"
 			],
 			"js": [
-				"content/replace-print-button.js"
+				"content/replace-print-button.js",
+				"content/show-error.js"
 			]
 		}
 	],

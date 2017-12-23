@@ -1,4 +1,8 @@
 (function () {
+	function showError(tab, msg) {
+		chrome.tabs.sendMessage(tab.id, {action: 'show-error', errorText: msg});
+	}
+
 	function getLocation(href) {
 		const l = document.createElement("a");
 		l.href = href;
@@ -38,10 +42,17 @@
 			if (xhr.readyState === 4) {
 				if (xhr.status === 200) {
 					const data = JSON.parse(xhr.responseText);
-					callback(data);
+					const result = {
+						successful: true,
+						data: data
+					};
+					callback(result);
 				} else {
 					console.error('Error fetching issues, http code: ' + xhr.status, e, xhr);
-					// TODO Open error page / documentation
+					const result = {
+						successful: false,
+					};
+					callback(result);
 				}
 			}
 		};
@@ -70,9 +81,17 @@
 				'&max=' + issuesPerPage +
 				'&after=' + skipIssues;
 
-			fetchIssues(restUrl, function (data) {
-				singleton.getInstance().data = data;
-				chrome.tabs.create({url: chrome.runtime.getURL('print/print.html')});
+			fetchIssues(restUrl, function (result) {
+				if (result.successful) {
+					if (result.data.issue.length === 0) {
+						showError(tab, 'No issues found to print.');
+					} else {
+						singleton.getInstance().data = result.data;
+						chrome.tabs.create({url: chrome.runtime.getURL('print/print.html')});
+					}
+				} else {
+					showError(tab, 'Error occurred while fetching issues.');
+				}
 			});
 		});
 	}
