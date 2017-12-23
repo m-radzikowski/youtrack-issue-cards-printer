@@ -37,7 +37,7 @@ function fetchIssues(url, callback) {
 }
 
 function findAndPrintIssues(tab) {
-	chrome.tabs.executeScript(tab.id, {file: 'find-issues-per-page.js'}, function (results) {
+	chrome.tabs.executeScript(tab.id, {file: 'background/find-issues-per-page.js'}, function (results) {
 		const issuesPerPage = parseInt(results[0]) || 100;
 
 		const location = getLocation(tab.url);
@@ -56,7 +56,7 @@ function findAndPrintIssues(tab) {
 
 		fetchIssues(restUrl, function (data) {
 			singleton.getInstance().data = data;
-			chrome.tabs.create({url: chrome.runtime.getURL('print.html')});
+			chrome.tabs.create({url: chrome.runtime.getURL('print/print.html')});
 		});
 	});
 }

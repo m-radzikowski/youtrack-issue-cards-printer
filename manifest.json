@@ -12,9 +12,9 @@
 	},
 	"background": {
 		"scripts": [
-			"on-off.js",
-			"singleton.js",
-			"page-action.js"
+			"background/show-page-action.js",
+			"background/singleton.js",
+			"background/page-action.js"
 		],
 		"persistent": false
 	},
@@ -25,7 +25,7 @@
 				"<all_urls>"
 			],
 			"js": [
-				"replace-print-button.js"
+				"content/replace-print-button.js"
 			]
 		}
 	],
