@@ -6,9 +6,9 @@ for physical scrum board.
 ## How to use
 
 1. Install extension.
-2. Go to Your YouTrack issues list - [https://<your-youtrack-domain>/issues](https://<your-youtrack-domain>/issues)
-3. Filter issues You want to print.
-4. Click extension icon or YouTrack "print issues" icon above issues list
+2. Go to Your YouTrack issues list - [https://your-youtrack-domain/issues](https://your-youtrack-domain/issues)
+3. Filter issues you want to print.
+4. Click extension icon or ![](youtrack-print-button.png) button above issues list
 to print cards.
 
 ## Limitations
@@ -25,5 +25,5 @@ Sorting may be changed below search bar, and it changes search request.
 This is fully supported.
 
 On the other hand, issues may be reordered manually by dragging them.
-Sort order shows then "The results are sorted by: custom order, ...".
+Sort order shows then `The results are sorted by: custom order, ...`.
 Custom order is ignored by the extension and only other sort directives are used.
