@@ -3,6 +3,10 @@
 Chrome extension that allows to print issues from YouTrack as cards
 for physical scrum board.
 
+If you find this extension useful,
+fill free to support me by PayPal:
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZPT5PRWA9V9BW)
+
 ## How to use
 
 1. Install extension.
