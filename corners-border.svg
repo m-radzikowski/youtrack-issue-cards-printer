@@ -1,6 +1,0 @@
-<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'>
-    <path d="M25,0,L0,0,L0,25" fill="none" stroke="black" stroke-width="1" vector-effect="non-scaling-stroke"/>
-    <path d="M0,75 L0,100 L25,100" fill="none" stroke="black" stroke-width="1" vector-effect="non-scaling-stroke"/>
-    <path d="M75,100 L100,100 L100,75" fill="none" stroke="black" stroke-width="1" vector-effect="non-scaling-stroke"/>
-    <path d="M100,25 L100,0 L75,0" fill="none" stroke="black" stroke-width="1" vector-effect="non-scaling-stroke"/>
-</svg>
