@@ -41,12 +41,22 @@
 		xhr.onreadystatechange = function (e) {
 			if (xhr.readyState === 4) {
 				if (xhr.status === 200) {
-					const data = JSON.parse(xhr.responseText);
-					const result = {
-						successful: true,
-						data: data
-					};
-					callback(result);
+					try {
+						const data = JSON.parse(xhr.responseText);
+						const result = {
+							successful: true,
+							data: data
+						};
+						callback(result);
+					} catch (e) {
+						if (e instanceof SyntaxError) {
+							console.error("Failed to parse response", xhr);
+							alert("Failed to parse API response");
+						} else {
+							console.error(e, xhr);
+							alert("Unexpected error");
+						}
+					}
 				} else {
 					console.error('Error fetching issues, http code: ' + xhr.status, e, xhr);
 					const result = {
