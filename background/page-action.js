@@ -1,8 +1,4 @@
 (function () {
-	function showError(tab, msg) {
-		chrome.tabs.sendMessage(tab.id, {action: 'show-error', errorText: msg});
-	}
-
 	function getLocation(href) {
 		const l = document.createElement("a");
 		l.href = href;
@@ -51,7 +47,7 @@
 		return context ? '#{' + decodeURIComponent(context) + '}' : ''
 	}
 
-	function fetchIssues(url, callback) {
+	function fetchIssues(tab, url, callback) {
 		const xhr = new XMLHttpRequest();
 
 		xhr.onreadystatechange = function (e) {
@@ -67,10 +63,10 @@
 					} catch (e) {
 						if (e instanceof SyntaxError) {
 							console.error("Failed to parse response", xhr);
-							alert("Failed to parse API response");
+							alert('Failed to parse API response');
 						} else {
 							console.error(e, xhr);
-							alert("Unexpected error");
+							alert('Unexpected error');
 						}
 					}
 				} else {
@@ -108,16 +104,16 @@
 				'&max=' + issuesPerPage +
 				'&after=' + skipIssues;
 
-			fetchIssues(restUrl, function (result) {
+			fetchIssues(tab, restUrl, function (result) {
 				if (result.successful) {
 					if (result.data.issue.length === 0) {
-						showError(tab, 'No issues found to print.');
+						alert('No issues found to print.');
 					} else {
 						singleton.getInstance().data = result.data;
 						chrome.tabs.create({url: chrome.runtime.getURL('print/print.html')});
 					}
 				} else {
-					showError(tab, 'Error occurred while fetching issues.');
+					alert('Error occurred while fetching issues.');
 				}
 			});
 		});
