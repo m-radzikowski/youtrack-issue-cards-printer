@@ -21,14 +21,30 @@
 		return def;
 	}
 
+	function getBasePath(location) {
+		const pathname = location.pathname;
+
+		const possiblePaths = ['/issues', '/tag', '/search'];
+		for (let i = 0; i < possiblePaths.length; i++) {
+			const path = possiblePaths[i];
+
+			const idx = pathname.indexOf(path);
+			if (idx !== -1) {
+				return pathname.substr(0, idx);
+			}
+		}
+
+		return '';
+	}
+
 	function getContextQuery(location) {
 		const pathname = location.pathname;
 
 		let context = '';
-		if (pathname.startsWith('/issues/')) {
-			context = pathname.substr('/issues/'.length);
-		} else if (pathname.startsWith('/tag/') || pathname.startsWith('/search/')) {
-			const tag = pathname.substr(pathname.indexOf('/', 1) + 1);
+		if (pathname.includes('/issues/')) {
+			context = pathname.substr(pathname.lastIndexOf('/') + 1);
+		} else if (pathname.includes('/tag/') || pathname.includes('/search/')) {
+			const tag = pathname.substr(pathname.lastIndexOf('/') + 1);
 			context = tag.substring(0, tag.lastIndexOf('-'));
 		}
 
@@ -79,6 +95,7 @@
 			const location = getLocation(tab.url);
 			const origin = location.origin;
 			const skipIssues = getQueryVariable(location, 'p', 0);
+			const basePath = getBasePath(location);
 
 			let query = getQueryVariable(location, 'q', '');
 			if (!query.includes('sort by')) { // add default sort - by updated
@@ -86,7 +103,7 @@
 			}
 			query = '(' + query + ') and ' + getContextQuery(location);
 
-			const restUrl = origin + '/rest/issue?' +
+			const restUrl = origin + basePath + '/rest/issue?' +
 				'filter=' + encodeURIComponent(query) +
 				'&max=' + issuesPerPage +
 				'&after=' + skipIssues;
