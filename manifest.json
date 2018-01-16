@@ -30,8 +30,7 @@
 		}
 	],
 	"permissions": [
-		"declarativeContent",
-		"activeTab",
+		"tabs",
 		"<all_urls>"
 	]
 }
