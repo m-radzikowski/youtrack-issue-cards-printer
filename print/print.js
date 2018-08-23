@@ -95,5 +95,5 @@
 	setTimeout(window.print, 100);
 
 	// close page after exit from print mode
-	setTimeout(window.close, 0);
+	setTimeout(window.close, 200);
 })();
