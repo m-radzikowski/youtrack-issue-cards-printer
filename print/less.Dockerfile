@@ -1,7 +1,7 @@
 FROM ewoutp/lessc
 
-RUN npm install -g onchange
-RUN npm install -g less-plugin-clean-css
+RUN npm install -g onchange@3.3.0
+RUN npm install -g less-plugin-clean-css@1.5.1
 
 COPY docker/less-compile.sh /less-compile.sh
 

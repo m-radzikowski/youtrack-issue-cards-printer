@@ -1,8 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Arbutus+Slab&subset=latin-ext');
 
+@card-size: 7.8cm;
+
 @line-height: 1.25;
 @issue-summary-lines: 4;
-@left-text-start: 0.9cm;
+@elements-space: 0.4cm;
+@bottom-elements-height: 1.8cm;
+
+@magnet-radius: 1cm;
+@top-block-width: calc(@card-size / 2 - @magnet-radius - @elements-space);
+@points-diameter: @bottom-elements-height;
+@priority-bar-width: 0.5cm;
+@id-color: #666;
 
 .card {
 	font-family: 'Arbutus Slab', serif;
@@ -15,13 +24,11 @@
 }
 
 .magnet-place {
-	@radius: 1cm;
-
-	left: calc(50% - @radius);
-	height: @radius;
-	width: calc(@radius * 2);
-	border-bottom-left-radius: @radius;
-	border-bottom-right-radius: @radius;
+	left: calc(50% - @magnet-radius);
+	height: @magnet-radius;
+	width: calc(@magnet-radius * 2);
+	border-bottom-left-radius: @magnet-radius;
+	border-bottom-right-radius: @magnet-radius;
 	border: 1px dashed #ccc;
 	border-top: 0;
 }
@@ -44,7 +51,7 @@
 	@font-size: 26pt;
 
 	top: 1.3cm;
-	left: @left-text-start;
+	left: 0;
 	right: 0;
 	height: calc(@font-size * @issue-summary-lines * @line-height);
 	font-size: @font-size;
@@ -62,20 +69,39 @@
 
 .issue-id {
 	bottom: 0;
-	height: 1.8cm;
-	left: @left-text-start;
-	line-height: 1.8cm;
+	left: calc(@priority-bar-width + @elements-space);
+	width: calc(@card-size - @priority-bar-width - @points-diameter - 2 * @elements-space);
+	height: @bottom-elements-height;
+	line-height: @bottom-elements-height;
 	font-size: 20pt;
-	color: #666;
+	color: @id-color;
+	font-weight: bold;
+
+	span {
+		overflow: hidden;
+		display: block;
+		white-space: nowrap;
+	}
+}
+
+.issue-parent-id {
+	bottom: 0;
+	left: calc(@priority-bar-width + @elements-space);
+	color: @id-color;
 }
 
 .issue-type {
 	right: 0;
-	width: 2.5cm;
+	width: @top-block-width;
 }
 
-.issue-type > span {
-	@font-size: 14pt;
+.issue-subsystem {
+	left: 0;
+	width: @top-block-width;
+}
+
+.issue-type > span, .issue-subsystem > span {
+	@font-size: 13pt;
 	@vertical-padding: 0.05cm;
 
 	padding: @vertical-padding 0.2cm;
@@ -84,21 +110,19 @@
 	width: 100%;
 	display: block;
 	text-align: center;
-	max-height: calc(@font-size * @line-height * 2 + @vertical-padding * 2);
+	max-height: calc(2 * @font-size * @line-height + 2 * @vertical-padding - 1px); // -1px to cut artefacts from rounding probably
 	overflow: hidden;
 }
 
 .issue-points {
-	@diameter: 1.8cm;
-
-	width: @diameter;
-	height: @diameter;
+	width: @points-diameter;
+	height: @points-diameter;
 	border-radius: 50%;
 	border: 0.05cm solid #666;
 	right: 0;
 	bottom: 0;
 	text-align: center;
-	line-height: @diameter;
+	line-height: @points-diameter;
 	font-size: 32pt;
 }
 
@@ -107,9 +131,9 @@
 }
 
 .issue-priority {
-	width: 0.5cm;
-	height: 100%;
-	top: 0;
+	bottom: 0;
+	width: @priority-bar-width;
+	height: @bottom-elements-height;
 	font-size: 0;
 }
 
