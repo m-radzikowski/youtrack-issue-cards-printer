@@ -15,11 +15,12 @@
 	 * Gets fields array from the issue and converts it to object
 	 * with field names as keys and field values as values. Keys are unified to camelCase.
 	 * Additionally, there are added keys:
-	 * 1. xxxColor for fields containing "color" parameter, with "bg" and "fg" fields, where xxx is the field's name.
-	 * 2. linkXxx for issue links, containing array of links of given type, where Xxx is the link's type.
+	 * 1. id with issue ID.
+	 * 2. xxxColor for fields containing "color" parameter, with "bg" and "fg" fields, where xxx is the field's name.
+	 * 3. linkXxx for issue links, containing array of links of given type, where Xxx is the link's type.
 	 */
 	function getIssueFields(issue) {
-		return issue.field.reduce(function (fields, field) {
+		const fields = issue.field.reduce(function (fields, field) {
 			let name = field.name
 				.split(' ')
 				.map(value => capitalizeFirstLetter(value))
@@ -41,11 +42,13 @@
 			}
 			return fields;
 		}, {});
+
+		fields.id = issue.id;
+
+		return fields;
 	}
 
-	function setCardElementText(card, className, content) {
-		const element = card.getElementsByClassName(className)[0];
-
+	function setElementText(element, content) {
 		if (content !== undefined && content !== null) {
 			let value;
 			if (typeof content === 'string') {
@@ -60,9 +63,7 @@
 		}
 	}
 
-	function setCardElementColor(card, className, color) {
-		const element = card.getElementsByClassName(className)[0].getElementsByTagName('span')[0];
-
+	function setElementColor(element, color) {
 		if (color !== undefined && color !== null) {
 			element.style.background = color.bg;
 			element.style.color = color.fg;
@@ -82,16 +83,10 @@
 
 		issuesWrapper.appendChild(card);
 
-		setCardElementText(card, 'issue-id', issue.id);
-		setCardElementText(card, 'issue-parent-id', fields.linkSubtask);
-		setCardElementText(card, 'issue-summary', fields.summary);
-		setCardElementText(card, 'issue-type', fields.type);
-		setCardElementText(card, 'issue-subsystem', fields.subsystem);
-		setCardElementColor(card, 'issue-subsystem', fields.subsystemColor);
-		setCardElementColor(card, 'issue-type', fields.typeColor);
-		setCardElementText(card, 'issue-points', fields.storyPoints);
-		setCardElementText(card, 'issue-priority', fields.priority);
-		setCardElementColor(card, 'issue-priority', fields.priorityColor);
+		card.querySelectorAll('[data-field]').forEach(node => {
+			setElementText(node, fields[node.dataset.field]);
+			setElementColor(node, fields[node.dataset.field + 'Color']);
+		});
 	});
 
 	// despite font is loaded in CSS before the JS, sometimes print page opens with default font
