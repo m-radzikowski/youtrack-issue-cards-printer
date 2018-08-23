@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+	      integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"/>
+	<link rel="stylesheet" href="options/options.css"/>
+
+	<title>YouTrack Issue Cards Printer settings</title>
+</head>
+<body class="bg-light">
+
+<div class="container">
+	<div class="py-5 text-center">
+		<img class="d-block mx-auto mb-4" src="icon/icon128.png" alt="" width="72" height="72">
+		<h2>YouTrack Issue Cards Printer</h2>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group custom-control custom-checkbox">
+				<input type="checkbox" class="custom-control-input" id="custom-layout">
+				<label class="custom-control-label" for="custom-layout">Use custom card layout</label>
+			</div>
+		</div>
+		<div class="col-md-3 col-sm-6 text-center text-sm-right">
+			<button type="button" id="show-preview" class="btn btn-outline-primary btn-sm">Show card preview</button>
+		</div>
+	</div>
+
+	<div class="row custom-layout">
+		<div class="col-md-9">
+			<div class="form-group">
+				<label for="card-template">Card template</label>
+				<textarea class="form-control code" id="card-template" rows="15"></textarea>
+			</div>
+		</div>
+		<div class="col">
+			<label class="d-none d-md-block">&nbsp;</label>
+			<p>
+				<small>
+					<a href="#" id="load-default-template">Load default template</a>
+					(any custom content will be overridden).
+				</small>
+			</p>
+			<p>
+				<small>
+					Modify template or create your own.
+					You may use <a target="_blank" class="default-stylesheet">default classes</a>.
+				</small>
+			</p>
+			<p>
+				<small>
+					Use <code>data-field</code> attribute to link template element
+					with data from YouTrack issue.
+					Content is set inside child <code>span</code> element
+					of node with <code>data-field</code> attribute.
+				</small>
+			</p>
+			<p>
+				<small>
+					Read about <a href="#">available fields</a>. <!-- TODO Add link to manual with fields description. -->
+				</small>
+			</p>
+		</div>
+	</div>
+
+	<div class="row custom-layout">
+		<div class="col-md-9">
+			<div class="form-group">
+				<label for="card-styles">Card styles</label>
+				<textarea class="form-control code" id="card-styles" rows="15"></textarea>
+			</div>
+		</div>
+		<div class="col">
+			<label class="d-none d-md-block">&nbsp;</label>
+			<p>
+				<small>
+					Styles will be added as additional to the <a target="_blank" class="default-stylesheet">default card stylesheet</a>.
+				</small>
+			</p>
+			<p>
+				<small>
+					Card structure:<br/>
+					<code>.card-wrapper</code> 8.8 x 8.8 cm<br/>
+					<span style="padding-left: 1rem;"><code>.card</code> 7.8 x 7.8 cm</span><br/>
+					<span style="padding-left: 2rem;"><code>&lt;card template&gt;</code></span>
+				</small>
+			</p>
+		</div>
+	</div>
+
+	<hr class="mb-4 mt-4"/>
+
+	<div class="form-group custom-control custom-checkbox">
+		<input type="checkbox" class="custom-control-input" id="debug-mode">
+		<label class="custom-control-label" for="debug-mode">Debug mode</label>
+		<p>
+			<small class="text-muted">
+				In debug mode page with issue cards is opened, but without print popup right away.<br/>
+				It's useful when creating custom card layout.
+			</small>
+		</p>
+	</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<script src="options/options.js"></script>
+</body>
+</html>

@@ -31,6 +31,9 @@
 	],
 	"permissions": [
 		"tabs",
-		"<all_urls>"
-	]
+		"<all_urls>",
+		"storage"
+	],
+	"options_page": "options.html",
+	"content_security_policy": "script-src 'self' https://code.jquery.com https://cdnjs.cloudflare.com https://stackpath.bootstrapcdn.com; object-src 'self'"
 }

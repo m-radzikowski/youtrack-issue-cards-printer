@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>YouTrack Issue Cards Printer preview</title>
+	<link rel="stylesheet" href="../print/print.css"/>
+	<link rel="stylesheet" href="../print/card.css"/>
+	<link rel="stylesheet" href="preview.css"/>
+</head>
+<body>
+
+<div id="issues-wrapper">
+	<div class="card-wrapper">
+		<div class="card">
+			<div class="magnet-place"></div>
+			<div class="issue-summary" data-field="summary"><span></span></div>
+			<div class="issue-id" data-field="id"><span></span></div>
+			<div class="issue-parent-id" data-field="linkSubtask">subtask of <span></span></div>
+			<div class="issue-type" data-field="type"><span></span></div>
+			<div class="issue-subsystem" data-field="subsystem"><span></span></div>
+			<div class="issue-points" data-field="storyPoints"><span></span></div>
+			<div class="issue-priority" data-field="priority"><span></span></div>
+		</div>
+	</div>
+</div>
+
+<script src="preview.js"></script>
+</body>
+</html>

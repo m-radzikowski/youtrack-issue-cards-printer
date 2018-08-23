@@ -70,30 +70,47 @@
 		}
 	}
 
-	const data = cloneObject(chrome.extension.getBackgroundPage().singleton.getInstance().data);
+	function showPrintPopup() {
+		// despite font is loaded in CSS before the JS, sometimes print page opens with default font
+		// opening print window with little delay should solve this problem, as browser should display font
+		// properly up to this point
+		setTimeout(window.print, 100);
 
-	const cardTemplate = document.getElementById('card-template');
-	const issuesWrapper = document.getElementById('issues-wrapper');
+		// close page after exit from print mode
+		setTimeout(window.close, 200);
+	}
 
-	data.issue.forEach(function (issue) {
-		const fields = getIssueFields(issue);
+	chrome.storage.sync.get({ // TODO Remove duplicated sync.get with defaults (options.js)
+		debug_mode: false
+	}, function (config) {
+		const data = cloneObject(chrome.extension.getBackgroundPage().singleton.getInstance().data);
 
-		const card = cardTemplate.cloneNode(true);
-		card.id = '';
+		if (config.debug_mode) {
+			console.log(`Fetched ${data.issue.length} issues`);
+		}
 
-		issuesWrapper.appendChild(card);
+		const cardTemplate = document.getElementById('card-template');
+		const issuesWrapper = document.getElementById('issues-wrapper');
 
-		card.querySelectorAll('[data-field]').forEach(node => {
-			setElementText(node, fields[node.dataset.field]);
-			setElementColor(node, fields[node.dataset.field + 'Color']);
+		data.issue.forEach(function (issue) {
+			const fields = getIssueFields(issue);
+			if (config.debug_mode) {
+				console.log(`Issue ${issue.id} fields:`, fields);
+			}
+
+			const card = cardTemplate.cloneNode(true);
+			card.id = '';
+
+			issuesWrapper.appendChild(card);
+
+			card.querySelectorAll('[data-field]').forEach(node => {
+				setElementText(node, fields[node.dataset.field]);
+				setElementColor(node, fields[node.dataset.field + 'Color']);
+			});
 		});
+
+		if (!config.debug_mode) {
+			showPrintPopup();
+		}
 	});
-
-	// despite font is loaded in CSS before the JS, sometimes print page opens with default font
-	// opening print window with little delay should solve this problem, as browser should display font
-	// properly up to this point
-	setTimeout(window.print, 100);
-
-	// close page after exit from print mode
-	setTimeout(window.close, 200);
 })();
