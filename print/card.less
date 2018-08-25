@@ -100,18 +100,21 @@
 	width: @top-block-width;
 }
 
-.issue-type > span, .issue-subsystem > span {
-	@font-size: 13pt;
-	@vertical-padding: 0.05cm;
-
-	padding: @vertical-padding 0.2cm;
+.issue-type, .issue-subsystem {
 	border-radius: 0.1cm;
-	font-size: @font-size;
-	width: 100%;
-	display: block;
-	text-align: center;
-	max-height: calc(2 * @font-size * @line-height + 2 * @vertical-padding - 1px); // -1px to cut artefacts from rounding probably
-	overflow: hidden;
+
+	& > span {
+		@font-size: 13pt;
+		@vertical-padding: 0.05cm;
+
+		padding: @vertical-padding 0.2cm;
+		font-size: @font-size;
+		width: 100%;
+		display: block;
+		text-align: center;
+		max-height: calc(2 * @font-size * @line-height + 2 * @vertical-padding - 1px); // -1px to cut artefacts from rounding probably
+		overflow: hidden;
+	}
 }
 
 .issue-points {
