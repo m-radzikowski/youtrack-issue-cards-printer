@@ -44,28 +44,6 @@
 		return fields;
 	}
 
-	function setElementText(element, content) {
-		if (content !== undefined && content !== null) {
-			let value;
-			if (typeof content === 'string') {
-				value = content;
-			} else {
-				value = content[0];
-			}
-
-			element.getElementsByTagName('span')[0].innerHTML = value;
-		} else {
-			element.className += ' hide';
-		}
-	}
-
-	function setElementColor(element, color) {
-		if (color !== undefined && color !== null) {
-			element.style.background = color.bg;
-			element.style.color = color.fg;
-		}
-	}
-
 	function showPrintPopup() {
 		// despite font is loaded in CSS before the JS, sometimes print page opens with default font
 		// opening print window with little delay should solve this problem, as browser should display font
@@ -99,10 +77,7 @@
 
 			issuesWrapper.appendChild(card);
 
-			card.querySelectorAll('[data-field]').forEach(node => {
-				setElementText(node, fields[node.dataset.field]);
-				setElementColor(node, fields[node.dataset.field + 'Color']);
-			});
+			fillCard(card, fields);
 		});
 
 		if (!config.debug_mode) {

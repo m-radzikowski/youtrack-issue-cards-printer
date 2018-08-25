@@ -1,4 +1,4 @@
-const resizeViewPort = function (width, height) {
+function resizeViewPort(width, height) {
 	if (window.outerWidth) {
 		window.resizeTo(
 			width + (window.outerWidth - window.innerWidth),
@@ -11,7 +11,7 @@ const resizeViewPort = function (width, height) {
 			height + (500 - document.body.offsetHeight)
 		);
 	}
-};
+}
 
 const wrapper = document.getElementsByClassName('card-wrapper')[0];
 resizeViewPort(wrapper.offsetWidth, wrapper.offsetHeight);
@@ -25,6 +25,35 @@ const defaultTemplate = `<div class="magnet-place"></div>
 <div class="issue-points" data-field="storyPoints"><span></span></div>
 <div class="issue-priority" data-field="priority"><span></span></div>`;
 
+const mockFields = {
+	id: 'PRINT-123',
+	commentsCount: '3',
+	created: Date.now(),
+	description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam elit ante, facilisis eget sapien sit amet, rhoncus sagittis nisl.',
+	linkSubtaskSubtaskOf: ['PRINT-42'],
+	linkSubtaskParentFor: ['PRINT-200'],
+	linkProblemIncidentIsCausedBy: ['PRINT-3'],
+	linkProblemIncidentCauses: ['PRINT-7'],
+	numberInProject: '123',
+	priority: ['Normal'],
+	priorityColor: {bg: '#e6f6cf', fg: '#4da400'},
+	projectShortName: 'PRINT',
+	reporterFullName: 'John Doe',
+	reporterName: 'john',
+	spentTime: ['17190'],
+	state: ['Open'],
+	stateColor: {bg: '#fed74a', fg: '#444'},
+	summary: 'Example issue for the preview',
+	type: ['Feature'],
+	typeColor: {bg: '#409600', fg: '#fff'},
+	updated: Date.now(),
+	updaterFullName: 'Jane Doe',
+	updaterName: 'jane',
+	subsystem: ['Printer'],
+	subsystemColor: {bg: '#553000', fg: '#fff'},
+	storyPoints: ['8']
+};
+
 chrome.storage.sync.get({
 	custom_layout: false,
 	custom_template: defaultTemplate,
@@ -36,4 +65,6 @@ chrome.storage.sync.get({
 	} else {
 		card.innerHTML = defaultTemplate;
 	}
+
+	fillCard(card, mockFields);
 });
