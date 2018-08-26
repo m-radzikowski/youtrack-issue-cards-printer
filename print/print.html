@@ -3,27 +3,20 @@
 <head>
 	<meta charset="UTF-8">
 	<title>YouTrack Issue Cards Printer</title>
-	<link rel="stylesheet" href="print.css"/>
-	<link rel="stylesheet" href="card.css"/>
+	<link rel="stylesheet" href="../resources/css/print.css"/>
+	<link rel="stylesheet" href="../resources/css/card.css"/>
+	<style type="text/css" id="custom-styles"></style>
 </head>
 <body>
 
 <div id="card-template" class="card-wrapper">
-	<div class="card">
-		<div class="magnet-place"></div>
-		<div class="issue-summary" data-field="summary"><span></span></div>
-		<div class="issue-id" data-field="id"><span></span></div>
-		<div class="issue-parent-id" data-field="linkSubtaskSubtaskOf">subtask of <span></span></div>
-		<div class="issue-type" data-field="type"><span></span></div>
-		<div class="issue-subsystem" data-field="subsystem"><span></span></div>
-		<div class="issue-points" data-field="storyPoints"><span></span></div>
-		<div class="issue-priority" data-field="priority"><span></span></div>
-	</div>
+	<div class="card"></div>
 </div>
 
 <div id="issues-wrapper"></div>
 
-<script src="card.js"></script>
+<script src="../resources/js/config.js"></script>
+<script src="../resources/js/card.js"></script>
 <script src="print.js"></script>
 </body>
 </html>

@@ -54,12 +54,10 @@
 		setTimeout(window.close, 200);
 	}
 
-	chrome.storage.sync.get({ // TODO Remove duplicated sync.get with defaults (options.js)
-		debug_mode: false
-	}, function (config) {
+	getConfig(function (config) {
 		const data = cloneObject(chrome.extension.getBackgroundPage().singleton.getInstance().data);
 
-		if (config.debug_mode) {
+		if (config.debugMode) {
 			console.log(`Fetched ${data.issue.length} issues`);
 		}
 
@@ -68,19 +66,28 @@
 
 		data.issue.forEach(function (issue) {
 			const fields = getIssueFields(issue);
-			if (config.debug_mode) {
+			if (config.debugMode) {
 				console.log(`Issue ${issue.id} fields:`, fields);
 			}
 
-			const card = cardTemplate.cloneNode(true);
-			card.id = '';
+			const template = cardTemplate.cloneNode(true);
+			template.id = '';
 
-			issuesWrapper.appendChild(card);
+			issuesWrapper.appendChild(template);
+
+			const card = template.getElementsByClassName('card')[0];
+
+			if (config.customLayout) {
+				card.innerHTML = config.customTemplate;
+				document.getElementById('custom-styles').innerHTML = config.customStyles;
+			} else {
+				card.innerHTML = DEFAULT_TEMPLATE;
+			}
 
 			fillCard(card, fields);
 		});
 
-		if (!config.debug_mode) {
+		if (!config.debugMode) {
 			showPrintPopup();
 		}
 	});

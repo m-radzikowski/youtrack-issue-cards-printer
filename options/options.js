@@ -4,25 +4,11 @@ const $cardTemplate = $('#card-template');
 const $cardStyles = $('#card-styles');
 const $debugMode = $('#debug-mode');
 
-const defaultTemplate = `<div class="magnet-place"></div>
-<div class="issue-summary" data-field="summary"><span></span></div>
-<div class="issue-id" data-field="id"><span></span></div>
-<div class="issue-parent-id" data-field="linkSubtask">subtask of <span></span></div>
-<div class="issue-type" data-field="type"><span></span></div>
-<div class="issue-subsystem" data-field="subsystem"><span></span></div>
-<div class="issue-points" data-field="storyPoints"><span></span></div>
-<div class="issue-priority" data-field="priority"><span></span></div>`;
-
-chrome.storage.sync.get({
-	custom_layout: false,
-	custom_template: defaultTemplate,
-	custom_styles: '',
-	debug_mode: false
-}, function (config) {
-	$customLayout.prop('checked', config.custom_layout).trigger('change');
-	$cardTemplate.val(config.custom_template);
-	$cardStyles.val(config.custom_styles);
-	$debugMode.prop('checked', config.debug_mode);
+getConfig(function (config) {
+	$customLayout.prop('checked', config.customLayout).trigger('change');
+	$cardTemplate.val(config.customTemplate);
+	$cardStyles.val(config.customStyles);
+	$debugMode.prop('checked', config.debugMode);
 });
 
 const manifest = chrome.runtime.getManifest();
@@ -30,16 +16,16 @@ $('.default-stylesheet').attr('href', `https://github.com/m-radzikowski/youtrack
 
 $customLayout.change(function () {
 	const checked = $(this).is(":checked");
-	chrome.storage.sync.set({
-		custom_layout: checked
+	setConfig({
+		customLayout: checked
 	});
 	checked ? $customLayoutEdit.show() : $customLayoutEdit.hide();
 });
 
 function saveCustomValues(callback) {
-	chrome.storage.sync.set({
-		custom_template: $cardTemplate.val(),
-		custom_styles: $cardStyles.val()
+	setConfig({
+		customTemplate: $cardTemplate.val(),
+		customStyles: $cardStyles.val()
 	}, callback);
 }
 
@@ -52,15 +38,15 @@ $cardStyles.blur(function () {
 });
 
 $('#load-default-template').click(function (e) {
-	$cardTemplate.val(defaultTemplate);
+	$cardTemplate.val(DEFAULT_TEMPLATE);
 	saveCustomValues();
 	e.preventDefault();
 });
 
 $debugMode.change(function () {
 	const checked = $(this).is(":checked");
-	chrome.storage.sync.set({
-		debug_mode: checked
+	setConfig({
+		debugMode: checked
 	});
 });
 

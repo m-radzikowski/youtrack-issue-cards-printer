@@ -16,15 +16,6 @@ function resizeViewPort(width, height) {
 const wrapper = document.getElementsByClassName('card-wrapper')[0];
 resizeViewPort(wrapper.offsetWidth, wrapper.offsetHeight);
 
-const defaultTemplate = `<div class="magnet-place"></div>
-<div class="issue-summary" data-field="summary"><span></span></div>
-<div class="issue-id" data-field="id"><span></span></div>
-<div class="issue-parent-id" data-field="linkSubtask">subtask of <span></span></div>
-<div class="issue-type" data-field="type"><span></span></div>
-<div class="issue-subsystem" data-field="subsystem"><span></span></div>
-<div class="issue-points" data-field="storyPoints"><span></span></div>
-<div class="issue-priority" data-field="priority"><span></span></div>`;
-
 const mockFields = {
 	id: 'PRINT-123',
 	commentsCount: '3',
@@ -54,16 +45,13 @@ const mockFields = {
 	storyPoints: ['8']
 };
 
-chrome.storage.sync.get({
-	custom_layout: false,
-	custom_template: defaultTemplate,
-	custom_styles: ''
-}, function (config) {
+getConfig(function (config) {
 	const card = document.getElementsByClassName('card')[0];
-	if (config.custom_layout) {
-		card.innerHTML = config.custom_template;
+	if (config.customLayout) {
+		card.innerHTML = config.customTemplate;
+		document.getElementById('custom-styles').innerHTML = config.customStyles;
 	} else {
-		card.innerHTML = defaultTemplate;
+		card.innerHTML = DEFAULT_TEMPLATE;
 	}
 
 	fillCard(card, mockFields);
