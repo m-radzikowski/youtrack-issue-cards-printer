@@ -7,13 +7,21 @@ If you find this extension useful,
 fill free to support me by PayPal:
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZPT5PRWA9V9BW)
 
+![](chrome-store/screenshot.png)
+
 ## How to use
 
-1. Install extension.
-2. Go to Your YouTrack issues list - [https://your-youtrack-domain/issues](https://your-youtrack-domain/issues)
+1. Install extension:
+[![Chrome Web Store](https://developer.chrome.com/webstore/images/ChromeWebStore_Badge_v2_496x150.png)](https://chrome.google.com/webstore/detail/youtrack-issue-cards-prin/pjcejghclgihlhinleocjojdalhnhckp)
+2. Go to your YouTrack issues list - [https://your-youtrack-domain/issues](https://your-youtrack-domain/issues)
 3. Filter issues you want to print.
 4. Click extension icon or ![](youtrack-print-button.png) button above issues list
 to print cards.
+
+## Customization
+
+Open extension options to customize issue fields and style.
+Read the [customization documentation](doc/customization.md).
 
 ## Limitations
 

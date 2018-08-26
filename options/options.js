@@ -12,7 +12,8 @@ getConfig(function (config) {
 });
 
 const manifest = chrome.runtime.getManifest();
-$('.default-stylesheet').attr('href', `https://github.com/m-radzikowski/youtrack-issue-cards-printer/blob/v${manifest.version}/print/card.less`);
+$('.default-stylesheet').attr('href', `https://github.com/m-radzikowski/youtrack-issue-cards-printer/blob/v${manifest.version}/resources/css/card.less`);
+$('.available-fields').attr('href', `https://github.com/m-radzikowski/youtrack-issue-cards-printer/blob/v${manifest.version}/doc/customization.md`);
 
 $customLayout.change(function () {
 	const checked = $(this).is(":checked");
