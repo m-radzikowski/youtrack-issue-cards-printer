@@ -11,7 +11,7 @@ fill free to support me by PayPal:
 
 ## How to use
 
-1. Install extension:
+1. Install extension:  
 [![Chrome Web Store](https://developer.chrome.com/webstore/images/ChromeWebStore_Badge_v2_496x150.png)](https://chrome.google.com/webstore/detail/youtrack-issue-cards-prin/pjcejghclgihlhinleocjojdalhnhckp)
 2. Go to your YouTrack issues list - [https://your-youtrack-domain/issues](https://your-youtrack-domain/issues)
 3. Filter issues you want to print.

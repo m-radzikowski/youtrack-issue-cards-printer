@@ -81,7 +81,7 @@ with `!important` attribute.
 ## Card styles
 
 Provided card styles as CSS code are added to
-[default styles](../resources/css/card.css)
+[default styles](../resources/css/card.less)
 to format cards.
 
 When styling, the unit used should be `cm`,

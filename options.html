@@ -23,12 +23,19 @@
 			<div class="form-group custom-control custom-checkbox">
 				<input type="checkbox" class="custom-control-input" id="custom-layout">
 				<label class="custom-control-label" for="custom-layout">Use custom card layout</label>
+				<p class="small text-muted custom-layout">
+					Checkout the <a target="_blank" class="customizing-cards">documentation</a>.
+				</p>
 			</div>
 		</div>
 		<div class="col-md-3 col-sm-6 text-center text-sm-right">
 			<button type="button" id="show-preview" class="btn btn-outline-primary btn-sm">Show card preview</button>
 		</div>
 	</div>
+
+	<!--<p class="small custom-layout" style="padding-left: 1.5rem;">-->
+	<!--Checkout the documentation.-->
+	<!--</p>-->
 
 	<div class="row custom-layout">
 		<div class="col-md-9">
@@ -74,20 +81,16 @@
 				<textarea class="form-control code" id="card-styles" rows="15"></textarea>
 			</div>
 		</div>
-		<div class="col">
+		<div class="col small">
 			<label class="d-none d-md-block">&nbsp;</label>
 			<p>
-				<small>
-					Styles will be added as additional to the <a target="_blank" class="default-stylesheet">default card stylesheet</a>.
-				</small>
+				Styles will be added as additional to the <a target="_blank" class="default-stylesheet">default card stylesheet</a>.
 			</p>
 			<p>
-				<small>
-					Card structure:<br/>
-					<code>.card-wrapper</code> 8.8 x 8.8 cm<br/>
-					<span style="padding-left: 1rem;"><code>.card</code> 7.8 x 7.8 cm</span><br/>
-					<span style="padding-left: 2rem;"><code>&lt;card template&gt;</code></span>
-				</small>
+				Card structure:<br/>
+				<code>.card-wrapper</code> 8.8 x 8.8 cm<br/>
+				<span style="padding-left: 1rem;"><code>.card</code> 7.8 x 7.8 cm</span><br/>
+				<span style="padding-left: 2rem;"><code>&lt;card template&gt;</code></span>
 			</p>
 		</div>
 	</div>
@@ -97,11 +100,9 @@
 	<div class="form-group custom-control custom-checkbox">
 		<input type="checkbox" class="custom-control-input" id="debug-mode">
 		<label class="custom-control-label" for="debug-mode">Debug mode</label>
-		<p>
-			<small class="text-muted">
-				In debug mode page with issue cards is opened, but without print popup right away.<br/>
-				It's useful when creating custom card layout.
-			</small>
+		<p class="small text-muted">
+			In debug mode page with issue cards is opened, but without print popup right away.<br/>
+			It's useful when creating custom card layout.
 		</p>
 	</div>
 </div>
