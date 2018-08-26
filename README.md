@@ -23,6 +23,10 @@ to print cards.
 Open extension options to customize issue fields and style.
 Read the [customization documentation](doc/customization.md).
 
+## Changelog
+
+See the [changelog](CHANGELOG.md).
+
 ## Limitations
 
 This extension does not support some cases that may produce unexpected behavior,
