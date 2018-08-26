@@ -47,6 +47,14 @@
 	top: -@radius;
 }
 
+.issue-right {
+	right: 0;
+}
+
+.issue-left {
+	left: 0;
+}
+
 .issue-summary {
 	@font-size: 26pt;
 
@@ -84,23 +92,14 @@
 	}
 }
 
-.issue-parent-id {
+.issue-id-caption {
 	bottom: 0;
 	left: calc(@priority-bar-width + @elements-space);
 	color: @id-color;
 }
 
-.issue-type {
-	right: 0;
+.issue-top-label {
 	width: @top-block-width;
-}
-
-.issue-subsystem {
-	left: 0;
-	width: @top-block-width;
-}
-
-.issue-type, .issue-subsystem {
 	border-radius: 0.1cm;
 
 	& > span {
