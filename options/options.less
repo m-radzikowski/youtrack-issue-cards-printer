@@ -1,7 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Arbutus+Slab&subset=latin-ext');
 
+@footer-height: 60px;
+
+html { // for sticky footer
+	position: relative;
+	min-height: 100%;
+}
+
 body {
 	overflow-y: scroll;
+	margin-bottom: calc(@footer-height + 50px); // for sticky footer
 }
 
 .title {
@@ -10,4 +18,28 @@ body {
 
 textarea.code {
 	font-family: monospace;
+}
+
+.footer {
+	@text-margin: 10px;
+	@border: 1px;
+
+	text-align: right;
+	position: absolute;
+	bottom: @border;
+	width: 100%;
+	height: @footer-height;
+	line-height: @footer-height;
+	font-size: smaller;
+
+	.content {
+		display: inline-block;
+		height: 100%;
+		border-top: @border solid rgba(0, 0, 0, .1);
+		padding-right: @text-margin;
+
+		a {
+			margin: 0 @text-margin;
+		}
+	}
 }

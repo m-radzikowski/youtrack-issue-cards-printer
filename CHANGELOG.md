@@ -1,12 +1,12 @@
 # Changelog
 
-## v0.2.0
+## v0.2.0 (2018-08-28)
 
 - new default card layout, with submodule and parent issue ID,
 - setting values based on `data-field` attribute in template,
 - extension options page,
 - debug mode disabling print popup, allowing to investigate layout and data,
-- custom layout option, allowing to provide own HTML and CSS code for cards.
+- custom layout option, allowing to provide own HTML and CSS code for cards (#1).
 
 ## v0.1.1 (2018-01-16)
 
