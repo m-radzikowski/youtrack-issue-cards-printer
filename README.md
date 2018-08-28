@@ -49,5 +49,5 @@ Custom order is ignored by the extension and only other sort directives are used
 ```bash
 VERSION=x.x.x
 git tag -a "v$VERSION"
-git archive -o "release-v$VERSION.zip" "tags/$VERSION"
+git archive -o "release-v$VERSION.zip" "tags/v$VERSION"
 ```
