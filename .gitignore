@@ -8,3 +8,5 @@
 !.idea/runConfigurations/
 !.idea/codeStyleSettings.xml
 !.idea/dataSources.xml
+
+release*.zip
