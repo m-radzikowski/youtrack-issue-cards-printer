@@ -43,3 +43,11 @@ This is fully supported.
 On the other hand, issues may be reordered manually by dragging them.
 Sort order shows then `The results are sorted by: custom order, ...`.
 Custom order is ignored by the extension and only other sort directives are used.
+
+## Build for Chrome Web Store
+
+```bash
+VERSION=x.x.x
+git tag -a "v$VERSION"
+git archive -o "release-v$VERSION.zip" "tags/$VERSION"
+```
