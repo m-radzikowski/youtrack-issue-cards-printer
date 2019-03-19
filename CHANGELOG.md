@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.3.0 (2019-03-19)
+
+- support for assignee property of the issue (#7),
+- adjusted extension enabling to comply with new Chrome requirements.
+
 ## v0.2.0 (2018-08-28)
 
 - new default card layout, with submodule and parent issue ID,
