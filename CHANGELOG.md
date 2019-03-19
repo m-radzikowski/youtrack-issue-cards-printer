@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.3.1 (2019-03-19)
+
+- fix for enabling extenstion in manifest.
+
 ## v0.3.0 (2019-03-19)
 
 - support for assignee property of the issue (#7),
