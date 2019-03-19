@@ -46,6 +46,8 @@ converted to camelCase. Example common fields:
 - `projectShortName`,
 - `reporterFullName`,
 - `reporterName`,
+- `assigneeFullName`,
+- `assigneeValue`,
 - `spentTime`,
 - `state`,
 - `summary`,

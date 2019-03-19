@@ -1,10 +1,10 @@
 function setElementText(element, content) {
 	if (content !== undefined && content !== null) {
 		let value;
-		if (typeof content === 'string') {
-			value = content;
+		if (Array.isArray(content)) {
+			value = content.join(', ');
 		} else {
-			value = content[0];
+			value = content;
 		}
 
 		element.getElementsByTagName('span')[0].innerHTML = value;

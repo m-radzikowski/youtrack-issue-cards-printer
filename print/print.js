@@ -10,37 +10,65 @@
 		});
 	}
 
+	function uppercaseFirstLetter(str) {
+		return str.charAt(0).toUpperCase() + str.slice(1);
+	}
+
 	/**
 	 * Gets fields array from the issue and converts it to object
 	 * with field names as keys and field values as values. Keys are unified to camelCase.
+	 * Array values are simplified to just first item from the array.
+	 * Object values are flattened, with keys built from field name and object property names.
 	 * Additionally, there are added keys:
 	 * 1. id with issue ID.
 	 * 2. xxxColor for fields containing "color" parameter, with "bg" and "fg" fields, where xxx is the field's name.
 	 * 3. linkXxxYyy for issue links, containing array of links of given type, where Xxx is the link's type and Yyy is the links role.
 	 */
 	function getIssueFields(issue) {
-		const fields = issue.field.reduce(function (fields, field) {
+		const fields = issue.field.reduce((fields, field) => {
 			const name = camelize(field.name);
+			let newFields = {};
 
 			if (name === 'links') {
-				const links = field.value.reduce(function (types, link) {
-					const linkName = camelize(`link ${link['type']} ${link['role']}`);
-					(types[linkName] = types[linkName] || []).push(link.value);
-					return types;
-				}, {});
-				Object.assign(fields, links);
+				newFields = getIssueLinkFields(field);
 			} else {
-				fields[name] = field.value;
+				const value = Array.isArray(field.value) ? field.value[0] : field.value;
+
+				if (typeof value == "object") {
+					newFields = getObjectFields(name, value);
+				} else {
+					newFields[name] = value;
+				}
 
 				if ('color' in field) {
-					fields[name + 'Color'] = field.color;
+					newFields[name + 'Color'] = field.color;
 				}
 			}
+
+			Object.assign(fields, newFields);
 			return fields;
 		}, {});
 
 		fields.id = issue.id;
 
+		return fields;
+	}
+
+	function getIssueLinkFields(field) {
+		return field.value.reduce((types, link) => {
+			const linkName = camelize(`link ${link['type']} ${link['role']}`);
+			(types[linkName] = types[linkName] || []).push(link.value);
+			return types;
+		}, {});
+	}
+
+	function getObjectFields(baseName, obj) {
+		const fields = [];
+		for (const key in obj) {
+			if (obj.hasOwnProperty(key)) {
+				fields[baseName + uppercaseFirstLetter(key)] = obj[key];
+			}
+		}
 		return fields;
 	}
 
