@@ -22,12 +22,4 @@
 			e.preventDefault();
 		};
 	}
-
-	if (window === top) {
-		chrome.runtime.onMessage.addListener(function (req, sender, sendResponse) {
-			if (req.action === 'find-yt-print-button') {
-				sendResponse(button !== null);
-			}
-		});
-	}
 })();

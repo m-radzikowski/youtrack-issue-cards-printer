@@ -13,12 +13,29 @@
 	},
 	"background": {
 		"scripts": [
-			"background/show-page-action.js",
 			"background/singleton.js",
 			"background/page-action.js"
 		],
 		"persistent": false
 	},
+	"event_rules": [
+		{
+			"event": "declarativeContent.onPageChanged",
+			"actions": [
+				{
+					"type": "declarativeContent.ShowPageAction"
+				}
+			],
+			"conditions": [
+				{
+					"type": "declarativeContent.PageStateMatcher",
+					"css": [
+						"button[id='id_l.I.c.tb.printIssues'], button[id='id_l.T.Issues.c.tb.printIssues'], button[id='id_l.S.Issues.c.tb.printIssues']"
+					]
+				}
+			]
+		}
+	],
 	"page_action": {},
 	"content_scripts": [
 		{

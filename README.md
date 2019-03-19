@@ -51,3 +51,21 @@ VERSION=x.x.x
 git tag -a "v$VERSION"
 git archive -o "release-v$VERSION.zip" "tags/v$VERSION"
 ```
+
+## Technical notes
+
+### Activating extension declaratively
+
+Extension shows as active on all pages
+because of replace print button script injection
+to any page.
+
+Much better would be to inject script declaratively
+only to pages identified by as YouTrack,
+like we do for page action button enabling.
+This would cause extension to show as disabled on other pages.
+
+Unfortunately, only URL matching is available for page content scripts
+as of Chrome 73. Required option to inject scripts based on CSS content matching,
+[RequestContentScript](https://developer.chrome.com/extensions/declarativeContent#type-RequestContentScript),
+is experimental and not supported in stable builds.
