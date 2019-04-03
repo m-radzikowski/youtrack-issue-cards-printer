@@ -15,8 +15,7 @@ fill free to support me by PayPal:
 [![Chrome Web Store](https://developer.chrome.com/webstore/images/ChromeWebStore_Badge_v2_496x150.png)](https://chrome.google.com/webstore/detail/youtrack-issue-cards-prin/pjcejghclgihlhinleocjojdalhnhckp)
 2. Go to your YouTrack issues list - [https://your-youtrack-domain/issues](https://your-youtrack-domain/issues)
 3. Filter issues you want to print.
-4. Click extension icon or ![](doc/youtrack-print-button.png) button above issues list
-to print cards.
+4. Click extension icon to print cards.
 
 ## Customization
 
@@ -69,3 +68,15 @@ Unfortunately, only URL matching is available for page content scripts
 as of Chrome 73. Required option to inject scripts based on CSS content matching,
 [RequestContentScript](https://developer.chrome.com/extensions/declarativeContent#type-RequestContentScript),
 is experimental and not supported in stable builds.
+
+For the new (experimental) issues list layout in YT 2019.1
+there is no support for print button anyway. Maybe in future
+we could drop support for old YT and print button whatsoever.
+
+### Support for the old and new issues list layout
+
+Right now extension supports both old issues list layout
+and the new (experimental) one introduced in YT 2019.1.
+
+In case of dropping support for old layout in future,
+handling print button may be removed. 
