@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.4.0 (2019-04-03)
+
+- support for the new (experimental) issues list in YouTrack 2019.1
+(printing using YouTrack print button is not supported in the new view).
+
 ## v0.3.1 (2019-03-19)
 
 - fix for enabling extenstion in manifest.

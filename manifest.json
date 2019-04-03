@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "YouTrack Issue Cards Printer",
 	"description": "Print issues from JetBrains YouTrack as cards for physical scrum board",
-	"version": "0.3.1",
+	"version": "0.4.0",
 	"author": "Maciej Radzikowski",
 	"homepage_url": "https://github.com/m-radzikowski/youtrack-issue-cards-printer",
 	"icons": {
