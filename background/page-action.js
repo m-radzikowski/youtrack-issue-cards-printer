@@ -85,6 +85,9 @@
 	}
 
 	function findAndPrintIssues(tab) {
+		// On the new (experimental) issues list in YT 2019.1 there is no more "issues per page" choice,
+		// and there are always up to 100 items loaded.
+		// Issues per page check may be removed in future, when dropping support for old layout.
 		chrome.tabs.executeScript(tab.id, {file: 'background/find-issues-per-page.js'}, function (results) {
 			const issuesPerPage = parseInt(results[0]) || 100;
 
@@ -119,6 +122,7 @@
 		});
 	}
 
+	// There is no support for clicking print button no the new (experimental) issues list in YT 2019.1.
 	chrome.runtime.onMessage.addListener(function (request, sender) {
 		if (sender.tab && request.action === 'print-youtrack-issues') {
 			findAndPrintIssues(sender.tab);
