@@ -125,11 +125,19 @@
 	// There is no support for clicking print button no the new (experimental) issues list in YT 2019.1.
 	chrome.runtime.onMessage.addListener(function (request, sender) {
 		if (sender.tab && request.action === 'print-youtrack-issues') {
+			window.dataLayer.push({
+				'event': 'printIssues',
+				'trigger': 'printButton',
+			});
 			findAndPrintIssues(sender.tab);
 		}
 	});
 
 	chrome.pageAction.onClicked.addListener(function (tab) {
+		window.dataLayer.push({
+			'event': 'printIssues',
+			'trigger': 'pageAction',
+		});
 		findAndPrintIssues(tab);
 	});
 })();

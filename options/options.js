@@ -22,6 +22,11 @@ $customLayout.change(function () {
 		customLayout: checked
 	});
 	checked ? $customLayoutEdit.show() : $customLayoutEdit.hide();
+	window.dataLayer.push({
+		'event': 'optionChange',
+		'trigger': 'customLayout',
+		'value': checked,
+	});
 });
 
 function saveCustomValues(callback) {
@@ -49,6 +54,11 @@ $debugMode.change(function () {
 	const checked = $(this).is(":checked");
 	setConfig({
 		debugMode: checked
+	});
+	window.dataLayer.push({
+		'event': 'optionChange',
+		'trigger': 'debugMode',
+		'value': checked,
 	});
 });
 

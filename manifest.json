@@ -13,6 +13,7 @@
 	},
 	"background": {
 		"scripts": [
+			"gtm.js",
 			"background/singleton.js",
 			"background/page-action.js"
 		],
@@ -53,5 +54,5 @@
 		"storage"
 	],
 	"options_page": "options.html",
-	"content_security_policy": "script-src 'self' https://code.jquery.com https://cdnjs.cloudflare.com https://stackpath.bootstrapcdn.com; object-src 'self'"
+	"content_security_policy": "script-src 'self' 'unsafe-eval' https://code.jquery.com https://cdnjs.cloudflare.com https://stackpath.bootstrapcdn.com https://www.googletagmanager.com https://www.google-analytics.com; object-src 'self'"
 }
