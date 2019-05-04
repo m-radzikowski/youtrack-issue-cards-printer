@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.4.1 (2019-05-04)
+
+- fixed activating extension action on browser start
+(see https://bugs.chromium.org/p/chromium/issues/detail?id=959581),
+- added Google Tag Manager to monitor extension usage patterns,
+- added privacy policy.
+
 ## v0.4.0 (2019-04-03)
 
 - support for the new (experimental) issues list in YouTrack 2019.1
