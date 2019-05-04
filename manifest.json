@@ -13,29 +13,12 @@
 	},
 	"background": {
 		"scripts": [
+			"background/show-page-action.js",
 			"background/singleton.js",
 			"background/page-action.js"
 		],
 		"persistent": false
 	},
-	"event_rules": [
-		{
-			"event": "declarativeContent.onPageChanged",
-			"actions": [
-				{
-					"type": "declarativeContent.ShowPageAction"
-				}
-			],
-			"conditions": [
-				{
-					"type": "declarativeContent.PageStateMatcher",
-					"css": [
-						"button[id=\"id_l.I.c.tb.printIssues\"], button[id=\"id_l.T.Issues.c.tb.printIssues\"], button[id=\"id_l.S.Issues.c.tb.printIssues\"], yt-issues-toolbar"
-					]
-				}
-			]
-		}
-	],
 	"page_action": {},
 	"content_scripts": [
 		{
@@ -50,7 +33,8 @@
 	"permissions": [
 		"tabs",
 		"<all_urls>",
-		"storage"
+		"storage",
+		"declarativeContent"
 	],
 	"options_page": "options.html",
 	"content_security_policy": "script-src 'self' https://code.jquery.com https://cdnjs.cloudflare.com https://stackpath.bootstrapcdn.com; object-src 'self'"
